@@ -307,3 +307,6 @@ body.active-popup {
     font-size: 2.5em;
 }
 
+body.active-popup .Apps-text {
+    filter: blur(10px);
+}
