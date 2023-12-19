@@ -18,6 +18,15 @@ body {
     background-position: center;
 }
 
+@media screen and (max-width: 600px) {
+    /* Styles for screens with a maximum width of 600 pixels */
+    /* Adjust styles accordingly to fit smaller screens */
+    body {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    /* Add more styles as needed */
+}
 
 header {
     position: fixed;
