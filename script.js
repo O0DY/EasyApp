@@ -10,34 +10,64 @@ document.addEventListener('DOMContentLoaded', function() {
 
     registerlink.addEventListener('click', () => {
         wrapper.classList.add('active');
-        toggleBlur(true, 'home');
+        toggleBlur(true);
     });
 
     loginlink.addEventListener('click', () => {
         wrapper.classList.remove('active');
-        toggleBlur(false, 'home');
+        toggleBlur(true);
     });
 
     btnPopup.addEventListener('click', () => {
         wrapper.classList.add('active-popup');
-        document.body.classList.add('active-popup');
-        toggleBlur(true, 'home');
+        toggleBlur(true);
     });
 
     iconClose.addEventListener('click', () => {
         wrapper.classList.remove('active-popup');
-        document.body.classList.remove('active-popup');
-        toggleBlur(false, 'home');
+        toggleBlur(false);
     });
 
-    function toggleBlur(isBlurred, page) {
+    function toggleBlur(isBlurred) {
         const blurValue = isBlurred ? '10px' : '0';
+        homeText.style.filter = isBlurred ? `blur(${blurValue})` : 'none';
+        homeImage.style.filter = isBlurred ? `blur(${blurValue})` : 'none';
+        appsText.style.filter = isBlurred ? `blur(${blurValue})` : 'none';
+        document.body.classList[isBlurred ? 'add' : 'remove']('active-popup');
+    }
+});
 
-        if (page === 'home') {
-            homeText.style.filter = isBlurred ? `blur(${blurValue})` : 'none';
-            homeImage.style.filter = isBlurred ? `blur(${blurValue})` : 'none';
-        } else if (page === 'apps') {
-            appsText.style.filter = isBlurred ? `blur(${blurValue})` : 'none';
-        }
+document.addEventListener('DOMContentLoaded', function () {
+    fetch('apps.json')
+        .then(response => response.json())
+        .then(apps => {
+            apps.forEach(app => {
+                const appContainer = document.createElement('div');
+                appContainer.className = 'app-container';
+
+                const appButton = document.createElement('button');
+                appButton.onclick = () => downloadApp(app.downloadUrl);
+
+                const appIcon = document.createElement('img');
+                appIcon.src = app.iconUrl;
+                appIcon.alt = `${app.name} Icon`;
+
+                const appName = document.createElement('h3');
+                appName.textContent = app.name;
+
+                const appDescription = document.createElement('p');
+                appDescription.textContent = app.description;
+
+                appButton.appendChild(appIcon);
+                appButton.appendChild(appName);
+                appButton.appendChild(appDescription);
+                appContainer.appendChild(appButton);
+                document.getElementById('appContainer').appendChild(appContainer);
+            });
+        })
+        .catch(error => console.error('Error fetching app data:', error));
+
+    function downloadApp(appDownloadUrl) {
+        window.location.href = appDownloadUrl;
     }
 });

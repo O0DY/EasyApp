@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Google Chrome",
+        "description": "Google Chrome, a swift, user-friendly browser renowned for speed, security, and vast extension options, dominates the market with efficiency and reliability.",
+        "downloadUrl": "https://github.com/O0DY/EasyApp/blob/main/Apps-Links/Google%20Chrome/ChromeSetup.exe",
+        "iconUrl": "https://github.com/O0DY/EasyApp/blob/main/Apps-Links/Google%20Chrome/icon.png"
+    },
+    {
+        "name": "Firefox",
+        "description": "Mozilla Firefox, open-source browser offering privacy, customization, and robust performance, competes with Chrome, emphasizing user control and community-driven development.",
+        "downloadUrl": "https://github.com/O0DY/EasyApp/blob/main/Apps-Links/Firefox/Firefox%20Installer.exe",
+        "iconUrl": "https://github.com/O0DY/EasyApp/blob/main/Apps-Links/Firefox/icon.png"
+    }
+]
